@@ -45,7 +45,9 @@ func main() {
 		if err != nil {
 			println("Error: ", err)
 		} else {
-			text = text[:len(text)-1]
+			for text[len(text)-1:len(text)] == "\r" || text[len(text)-1:len(text)] == "\n" {
+				text = text[:len(text)-1]
+			}
 			if text == ":q" {
 				println("\nClosing...")
 				return
